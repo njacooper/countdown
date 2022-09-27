@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { Routes, Route } from 'react-router-dom'
 
+import './output.css'
+
 import Navigation from './components/Navigation'
 
 import Game from './pages/Game'
@@ -8,7 +10,7 @@ import ManualLetters from './pages/ManualLetters'
 
 function App () {
   return (
-    <div>
+    <div className='bg-blue-500'>
       <main>
         <Routes>
           <Route path='/' element={<Game />} />
