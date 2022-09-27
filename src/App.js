@@ -1,5 +1,7 @@
 import * as React from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
+
+import Navigation from './components/Navigation'
 
 import Game from './pages/Game'
 import ManualLetters from './pages/ManualLetters'
@@ -13,10 +15,7 @@ function App () {
           <Route path='manual' element={<ManualLetters />} />
         </Routes>
 
-        <nav>
-          <Link to='/'>Game</Link>
-          <Link to='/manual'>Manual Letters</Link>
-        </nav>
+        <Navigation />
       </main>
     </div>
   )
