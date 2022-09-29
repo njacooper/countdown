@@ -23,7 +23,21 @@ const binarySortString = letters => {
   return newLetters
 }
 
+const findLetterInString = (letter, string) => {
+  let letterExists = false
+
+  let stringArray = string.split('')
+
+  for (let i = 0; i < stringArray.length; i++) {
+    if (letter == stringArray[i]) {
+      return (letterExists = true)
+    }
+  }
+  return letterExists
+}
+
 module.exports = {
   swapLetters,
-  binarySortString
+  binarySortString,
+  findLetterInString
 }
