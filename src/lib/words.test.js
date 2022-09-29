@@ -1,4 +1,9 @@
-const { swapLetters, binarySortString, findLetterInString } = require('./words')
+const {
+  swapLetters,
+  binarySortString,
+  findLetterInString,
+  binarySearchForLetter
+} = require('./words')
 
 test('Expect the letters at specified indexes to be swapped with each other', () => {
   expect(
@@ -13,4 +18,10 @@ test('Expect given string to be returned with letters arranged in alphabetical o
 test('Check if a letter exists in a given string', () => {
   expect(findLetterInString('a', 'television')).not.toBe(true)
   expect(findLetterInString('e', 'television')).toBe(true)
+})
+
+test('Find a letter in a given array and return its index', () => {
+  expect(
+    binarySearchForLetter('e', ['a','b','c','d','e','f','g','h'])
+  ).toBe(4)
 })
