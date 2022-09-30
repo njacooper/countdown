@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function SelectedLetters (props) {
+  const [letters, setLetters] = useState([])
   const [lettersContainers, setLettersContainers] = useState([
     '',
     '',
@@ -13,8 +14,20 @@ function SelectedLetters (props) {
     ''
   ])
 
+  useEffect(() => {
+    setLetters(props.letters)
+  }, [props.letters])
+
+  useEffect(() => {
+    let newLettersContainers = ['', '', '', '', '', '', '', '', '']
+    letters.map((letter, index) => {
+      newLettersContainers[index] = letter
+    })
+    setLettersContainers(newLettersContainers)
+  }, [letters])
+
   function handleRemoveLetter (index) {
-    console.log('remove letter at index: ', index)
+    props.handleRemoveLetter(index)
   }
   return (
     <>
