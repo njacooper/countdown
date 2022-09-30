@@ -1,3 +1,7 @@
+var fs = require('fs')
+
+const { readFileSync } = require('fs')
+
 const swapLetters = (index1, index2, lettersArray) => {
   let temp = lettersArray[index1]
   lettersArray[index1] = lettersArray[index2]
@@ -40,9 +44,6 @@ const binarySearchForLetter = (letter, lettersArray) => {
   let left = 0
   let right = lettersArray.length - 1
 
-  console.log('letter', letter)
-  console.log('letters array', lettersArray)
-
   while (left <= right) {
     //let middle = (left + right) / 2
     //let middle = Math.floor(lettersArray.length / 2)
@@ -68,9 +69,18 @@ const binarySearchForLetter = (letter, lettersArray) => {
   return -1
 }
 
+const importDictionary = () => {
+  let words
+
+  words = fs.readFileSync('./src/lib/english.txt', 'utf8').split('\n')
+
+  return words
+}
+
 module.exports = {
   swapLetters,
   binarySortString,
   findLetterInString,
-  binarySearchForLetter
+  binarySearchForLetter,
+  importDictionary
 }

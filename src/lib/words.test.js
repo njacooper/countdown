@@ -2,7 +2,8 @@ const {
   swapLetters,
   binarySortString,
   findLetterInString,
-  binarySearchForLetter
+  binarySearchForLetter,
+  importDictionary
 } = require('./words')
 
 test('Expect the letters at specified indexes to be swapped with each other', () => {
@@ -22,6 +23,10 @@ test('Check if a letter exists in a given string', () => {
 
 test('Find a letter in a given array and return its index', () => {
   expect(
-    binarySearchForLetter('e', ['a','b','c','d','e','f','g','h'])
+    binarySearchForLetter('e', ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'])
   ).toBe(4)
+})
+
+test('Import words seperated by a new line from a txt file. Expect 194,433 words to be imported.', () => {
+  expect(importDictionary().length).toBe(194433)
 })
