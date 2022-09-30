@@ -3,7 +3,8 @@ const {
   binarySortString,
   findLetterInString,
   binarySearchForLetter,
-  importDictionary
+  importDictionary,
+  findWordsFromLetters
 } = require('./words')
 
 test('Expect the letters at specified indexes to be swapped with each other', () => {
@@ -29,4 +30,8 @@ test('Find a letter in a given array and return its index', () => {
 
 test('Import words seperated by a new line from a txt file. Expect 194,433 words to be imported.', () => {
   expect(importDictionary().length).toBe(194433)
+})
+
+test('Find words in dictionary that match a string of letters', () => {
+  expect(findWordsFromLetters('hello').length).toBe(10)
 })

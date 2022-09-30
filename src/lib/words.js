@@ -1,7 +1,5 @@
 var fs = require('fs')
 
-const { readFileSync } = require('fs')
-
 const swapLetters = (index1, index2, lettersArray) => {
   let temp = lettersArray[index1]
   lettersArray[index1] = lettersArray[index2]
@@ -77,10 +75,60 @@ const importDictionary = () => {
   return words
 }
 
+const findWordsFromLetters = letters => {
+  let count = 0
+  //let letters = 'aeaedvnfh'
+
+  let foundWords = []
+
+  let dictionary = importDictionary()
+
+  //loop over dictionary words
+  for (let i = 0; i < dictionary.length; i++) {
+    let removedLetterCount = 0
+    let found = -1
+
+    let word = dictionary[i]
+
+    //sort dictionary word alphabetically
+    let sortedWord = binarySortString(word)
+
+    //split dictionary word into array
+    let wordArray = sortedWord.split('')
+
+    //Alphabetize letters
+    let sortedLetters = binarySortString(letters)
+
+    //split letters string into array
+    let lettersArray = sortedLetters.split('')
+
+    //
+    for (let i = 0; i < wordArray.length; i++) {
+      //find out if letter from word exists in letters. returns the index location of the found letter
+      found = binarySearchForLetter(wordArray[i], lettersArray)
+
+      if (found != -1) {
+        //update letters array by removing found letter
+        lettersArray.splice(found, 1)
+
+        removedLetterCount++
+      }
+    }
+    //check if the number of found letters is equal to the word size
+    if (removedLetterCount == word.length && word.length >= 3) {
+      //add word to found words array
+      foundWords.push({ length: word.length, word: word })
+    }
+  }
+
+  return foundWords
+}
+
 module.exports = {
   swapLetters,
   binarySortString,
   findLetterInString,
   binarySearchForLetter,
-  importDictionary
+  importDictionary,
+  findWordsFromLetters
 }
