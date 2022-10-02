@@ -3,6 +3,8 @@ import { useState, useEffect, useReducer } from 'react'
 
 import GameLettersSelection from '../components/GameLettersSelection'
 
+import AnswerBox from '../components/AnswerBox'
+
 import { getShuffledConsonants, getShuffledVowels } from '../lib/letters'
 
 function Game () {
@@ -182,6 +184,9 @@ function Game () {
         </button>
 
         <GameLettersSelection letters={state.letters} />
+
+        <AnswerBox />
+
         <button
           className='text-3xl font-bold uppercase text-white p-4'
           onClick={handleReset}
