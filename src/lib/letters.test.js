@@ -1,4 +1,9 @@
-const { getAllVowels, getAllConsonants } = require('./letters')
+const {
+  getAllVowels,
+  getAllConsonants,
+  getShuffledVowels,
+  getShuffledConsonants
+} = require('./letters')
 
 test(`Expect vowels to be an array containing: [
     'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a',
@@ -168,4 +173,12 @@ test(`Expect consonants to be an array containing: [
     'y',
     'z'
   ])
+})
+
+test('Shuffle vowels array and return', () => {
+  expect(getAllVowels()).not.toEqual(getShuffledVowels())
+})
+
+test('Shuffle consonants array and return', () => {
+  expect(getAllConsonants()).not.toEqual(getShuffledConsonants())
 })
