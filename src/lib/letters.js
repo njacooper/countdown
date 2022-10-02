@@ -109,5 +109,6 @@ module.exports = {
   getAllVowels,
   getAllConsonants,
   getShuffledVowels,
-  getShuffledConsonants
+  getShuffledConsonants,
+  shuffleLetters
 }

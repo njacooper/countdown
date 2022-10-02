@@ -5,7 +5,11 @@ import GameLettersSelection from '../components/GameLettersSelection'
 
 import AnswerBox from '../components/AnswerBox'
 
-import { getShuffledConsonants, getShuffledVowels } from '../lib/letters'
+import {
+  getShuffledConsonants,
+  getShuffledVowels,
+  shuffleLetters
+} from '../lib/letters'
 
 function Game () {
   //maximum number of letters in total allowed
@@ -19,6 +23,8 @@ function Game () {
 
   //if the maximum number of letters has been picked, also disable the auto button
   const [autoDisabled, setAutoDisabled] = useState(false)
+
+  const [isAutoPick, setIsAutoPick] = useState(false)
 
   const reducer = (state, action) => {
     console.log('state', state)
@@ -54,7 +60,12 @@ function Game () {
           cons: state.cons,
           letters: [...state.letters, consonant]
         }
-
+      case 'SHUFFLE':
+        let newLettersArrangement = shuffleLetters(state.letters)
+        return {
+          ...state,
+          letters: newLettersArrangement
+        }
       case 'RESET':
         return initialState
       default:
@@ -88,6 +99,29 @@ function Game () {
     }
   }
 
+  //auto select vowels and consonants
+  const handleAuto = async () => {
+    console.log('auto clicked')
+
+    let randVowCount = Math.floor(Math.random() * (5 - 3) + 3)
+    console.log('number of vowels: ', randVowCount)
+
+    let randConsonantCount = lettersMax - randVowCount
+    console.log('number of consonants: ', randConsonantCount)
+
+    setIsAutoPick(true)
+
+    for (let i = 0; i < randVowCount; i++) {
+      dispatch({ type: 'VOWEL' })
+    }
+
+    for (let i = 0; i < randConsonantCount; i++) {
+      dispatch({ type: 'CONSONANT' })
+    }
+
+    dispatch({ type: 'SHUFFLE' })
+  }
+
   //dispatch reset
   const handleReset = () => {
     console.log('clicked reset')
@@ -95,6 +129,8 @@ function Game () {
     dispatch({ type: 'RESET' })
     setVowelDisabled(false)
     setConsonantDisabled(false)
+    setIsAutoPick(false)
+    setAutoDisabled(false)
   }
 
   //after every change to the state.letters, check if the vowel or consonant buttons should be disabled
@@ -175,6 +211,14 @@ function Game () {
         >
           CONSONANT
         </button>
+        <button
+          onClick={handleAuto}
+          className='text-4xl w-full disabled:bg-stone-400 disabled:text-opacity-30 disabled:cursor-not-allowed'
+          disabled={autoDisabled}
+        >
+          Auto
+        </button>
+
         <button
           disabled={vowelDisabled}
           className='text-3xl font-bold uppercase text-white p-4 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:text-opacity-30'
