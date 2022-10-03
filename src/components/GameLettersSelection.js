@@ -6,7 +6,11 @@ function GameLettersSelection (props) {
   //choosen vowels and consonants
   const [letters, setLetters] = useState([])
 
-  const [isStarted, setIsStarted] = useState(true)
+  //letters added for answer
+  const [answerLetters, setAnswerLetters] = useState([])
+
+  //track if the game has started
+  const [isStarted, setIsStarted] = useState(false)
 
   //containers for storing each of the choosen vowels and consonants
   const [containerCount, setContainerCount] = useState(9)
@@ -49,10 +53,15 @@ function GameLettersSelection (props) {
     setContainers(newContainers)
   }, [containerCount])
 
-  //set letters
+  //updated letters on change to prop
   useEffect(() => {
     setLetters(props.letters)
   }, [props.letters])
+
+  //updated isStarted on change to prop
+  useEffect(() => {
+    setIsStarted(props.isStarted)
+  }, [props.isStarted])
 
   //when letters updates re-create the items array
   useEffect(() => {
@@ -70,7 +79,29 @@ function GameLettersSelection (props) {
   //handle the adding of a letter to the answer component
   function handleAdd (id) {
     console.log('adding: ', id)
+    let picked = items.find(item => {
+      return item.id == id
+    })
+    console.log('picked: ', picked.value)
+
+    //append the picked letter to the answer state
+    let newAnswerLetters = cloneDeep(answerLetters)
+    newAnswerLetters.push(picked)
+    setAnswerLetters(newAnswerLetters)
+
+    let newItems = cloneDeep(items)
+
+    newItems = newItems.map(item => {
+      if (item.id == id) {
+        item.value = ''
+        return item
+      } else {
+        return item
+      }
+    })
+    setItems(newItems)
   }
+
 
   return (
     <>
@@ -85,16 +116,18 @@ function GameLettersSelection (props) {
                 item =>
                   item.container == container && (
                     <div key={item.id}>
-                      <button
-                        onClick={() => handleAdd(container)}
-                        className={
-                          !isStarted
-                            ? 'hidden'
-                            : 'rounded-full p-0 -top-2 -right-2 absolute bg-blue-900 text-white text-base w-6 h-6'
-                        }
-                      >
-                        +
-                      </button>
+                      {item.value != '' && (
+                        <button
+                          onClick={() => handleAdd(container)}
+                          className={
+                            !isStarted
+                              ? 'hidden'
+                              : 'rounded-full p-0 -top-2 -right-2 absolute bg-blue-900 text-white text-base w-6 h-6'
+                          }
+                        >
+                          +
+                        </button>
+                      )}
 
                       <div className='uppercase text-4xl font-bold text-white h-20 mt-1 flex flex-col justify-center items-center bg-blue-600  empty:shadow-[inset_0_-2px_4px_rgba(0.2,0.2,0.2,0.4)]'>
                         {item.value}
@@ -105,6 +138,7 @@ function GameLettersSelection (props) {
             </div>
           ))}
         </div>
+
       </div>
     </>
   )
