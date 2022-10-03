@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { cloneDeep } from 'lodash'
+import AnswerBox from './AnswerBox'
 
 function GameLettersSelection (props) {
   //choosen vowels and consonants
@@ -162,6 +163,14 @@ function GameLettersSelection (props) {
             </div>
           ))}
         </div>
+
+        <p>Answer:</p>
+
+        <AnswerBox
+          items={answerLetters}
+          handleRemove={handleRemove}
+          updateItems={updateItems}
+        />
       </div>
     </>
   )
