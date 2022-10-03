@@ -102,6 +102,30 @@ function GameLettersSelection (props) {
     setItems(newItems)
   }
 
+  function updateItems (items) {
+    setAnswerLetters(items)
+  }
+
+  function handleRemove (itemToRemove) {
+    console.log('received in handle remove', itemToRemove)
+
+    let newItems = cloneDeep(items)
+
+    newItems = newItems.map(item => {
+      if (item.id == itemToRemove.id) {
+        item.value = itemToRemove.value
+        return item
+      }
+      return item
+    })
+    setItems(newItems)
+
+    let newAnswerLetters = cloneDeep(answerLetters)
+    newAnswerLetters = answerLetters.filter(letter => {
+      return letter.id != itemToRemove.id
+    })
+    setAnswerLetters(newAnswerLetters)
+  }
 
   return (
     <>
@@ -138,7 +162,6 @@ function GameLettersSelection (props) {
             </div>
           ))}
         </div>
-
       </div>
     </>
   )
