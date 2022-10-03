@@ -128,6 +128,13 @@ function GameLettersSelection (props) {
     setAnswerLetters(newAnswerLetters)
   }
 
+  //if letters length is zero, reset the answer letters state
+  useEffect(() => {
+    if (letters.length == 0) {
+      setAnswerLetters([])
+    }
+  }, [letters])
+
   return (
     <>
       <div className='bg-white'>
