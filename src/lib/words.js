@@ -1,5 +1,3 @@
-var fs = require('fs')
-
 const swapLetters = (index1, index2, lettersArray) => {
   let temp = lettersArray[index1]
   lettersArray[index1] = lettersArray[index2]
@@ -68,10 +66,13 @@ const binarySearchForLetter = (letter, lettersArray) => {
 }
 
 const importDictionary = () => {
-  let words
+  //import words from dictionary
+  var words = require('./dictionary')
 
-  words = fs.readFileSync('./src/lib/english.txt', 'utf8').split('\n')
+  //split words into array
+  words = words.split('\n')
 
+  //return array
   return words
 }
 
