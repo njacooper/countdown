@@ -124,6 +124,25 @@ function ManualLetters () {
     }
   }, [letters])
 
+  //track whether results should be retrieved and loaded
+  useEffect(() => {
+    if (isResultsLoading == true) {
+      //convert selected letters array to string
+      let newLetters = letters.join()
+
+      //find words from selected letters
+      let res = findWordsFromLetters(newLetters)
+
+      //update the results
+      setResults(res)
+    }
+  }, [isResultsLoading])
+
+  //reset the is results loading state
+  useEffect(() => {
+    setIsResultsLoading(false)
+  }, [results])
+
   //trigger the finding of words
   function handleFindWords (e) {
     setIsResultsLoading(true)
