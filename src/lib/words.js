@@ -125,11 +125,21 @@ const findWordsFromLetters = letters => {
   return foundWords
 }
 
+//check if a specific word exists in the dictionary
+const findWord = word => {
+  let dictionary = importDictionary()
+
+  let exists = dictionary.includes(word)
+
+  return exists
+}
+
 module.exports = {
   swapLetters,
   binarySortString,
   findLetterInString,
   binarySearchForLetter,
   importDictionary,
-  findWordsFromLetters
+  findWordsFromLetters,
+  findWord
 }
