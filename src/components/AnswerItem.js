@@ -2,6 +2,8 @@ import React from 'react'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 
+import { getLetterPoints } from '../lib/letters'
+
 const AnswerItem = props => {
   const {
     attributes,
@@ -35,6 +37,10 @@ const AnswerItem = props => {
             {...attributes}
           >
             {props.value}
+
+            <div className='absolute text-sm bottom-1 right-1'>
+              {getLetterPoints(props.value)}
+            </div>
           </div>
         </div>
       </div>
