@@ -137,6 +137,15 @@ function GameLettersSelection (props) {
     }
   }, [letters])
 
+  //pass the updated answer to the component above
+  useEffect(() => {
+    let newAnswer = ''
+    answerLetters.map(letter=>{
+        newAnswer += letter.value
+    })
+    props.updateAnswer(newAnswer)
+  }, [answerLetters])
+
   return (
     <>
       <div className='bg-white'>
@@ -184,8 +193,6 @@ function GameLettersSelection (props) {
           handleRemove={handleRemove}
           updateItems={updateItems}
         />
-
-        <Points answer={answerLetters} />
       </div>
     </>
   )

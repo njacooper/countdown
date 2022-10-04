@@ -9,15 +9,7 @@ function Points (props) {
   const [answer, setAnswer] = useState('')
 
   useEffect(() => {
-    if (props.answer) {
-      let word = ''
-      props.answer.map(letter => {
-        word += letter.value
-      })
-      setAnswer(word)
-    } else {
-      setAnswer('')
-    }
+    setAnswer(props.answer)
   }, [props.answer])
 
   useEffect(() => {

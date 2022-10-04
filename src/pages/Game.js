@@ -3,6 +3,8 @@ import { useState, useEffect, useReducer } from 'react'
 
 import GameLettersSelection from '../components/GameLettersSelection'
 
+import Points from '../components/Points'
+
 import Results from '../components/Results'
 
 import {
@@ -29,6 +31,8 @@ function Game () {
 
   //track if the game has started
   const [isStarted, setIsStarted] = useState(false)
+
+  const [answer, setAnswer] = useState('')
 
   //store results
   const [results, setResults] = useState([])
@@ -216,42 +220,60 @@ function Game () {
     return count
   }
 
+  //update answer
+  function updateAnswer (newAnswer) {
+    setAnswer(newAnswer)
+  }
+
   return (
     <>
-      <div className='bg-blue-400 my-4 md:w-[950px] px-4 justify-center mx-auto'>
+      <div className='bg-blue-400 my-4 lg:w-[950px] px-4 justify-center mx-auto'>
         <div className='grid grid-cols-3 gap-2'>
           <button
             disabled={consonantDisabled}
-            className='text-3xl font-bold uppercase text-white p-4 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:text-opacity-30'
+            className='text-sm md:text-3xl font-bold uppercase text-white disabled:bg-gray-400 disabled:cursor-not-allowed disabled:text-opacity-30'
             onClick={handleGetConsonant}
           >
             CONSONANT
           </button>
           <button
             onClick={handleAuto}
-            className='text-4xl w-full disabled:bg-stone-400 disabled:text-opacity-30 disabled:cursor-not-allowed'
+            className='text-sm md:text-3xl w-full disabled:bg-stone-400 disabled:text-opacity-30 disabled:cursor-not-allowed'
             disabled={autoDisabled}
           >
-            Auto
+            AUTO
           </button>
 
           <button
             disabled={vowelDisabled}
-            className='text-3xl font-bold uppercase text-white p-4 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:text-opacity-30'
+            className='text-sm md:text-3xl font-bold uppercase text-white p-4 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:text-opacity-30'
             onClick={handleGetVowel}
           >
             VOWEL
           </button>
         </div>
 
-        <GameLettersSelection letters={state.letters} isStarted={isStarted} />
+        <GameLettersSelection
+          letters={state.letters}
+          isStarted={isStarted}
+          updateAnswer={updateAnswer}
+        />
 
-        <button
-          className='text-3xl font-bold uppercase text-white p-4'
-          onClick={handleReset}
-        >
-          RESET
-        </button>
+        <div className='justify-between flex'>
+          <button
+            className='text-3xl font-bold uppercase text-white p-4'
+            onClick={handleReset}
+          >
+            RESET
+          </button>
+
+          <div className='bg-blue-400 flex items-center my-2 border-4 border-solid border-blue-800'>
+            <div className='font-bold text-4xl align-middle mr-6 px-4'>
+              Points:
+            </div>
+            <Points answer={answer} />
+          </div>
+        </div>
 
         {isResultsLoading ? <p>Loading...</p> : <Results results={results} />}
       </div>
