@@ -218,7 +218,7 @@ function Game () {
 
   return (
     <>
-      <div className='bg-blue-400 my-4'>
+      <div className='bg-blue-400 my-4 md:w-[950px] px-4 justify-center mx-auto'>
         <div className='grid grid-cols-3 gap-2'>
           <button
             disabled={consonantDisabled}

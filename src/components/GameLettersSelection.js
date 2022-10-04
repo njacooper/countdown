@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 
 import { cloneDeep } from 'lodash'
 import AnswerBox from './AnswerBox'
+import Points from './Points'
+import { getLetterPoints } from '../lib/letters'
 
 function GameLettersSelection (props) {
   //choosen vowels and consonants
@@ -138,7 +140,7 @@ function GameLettersSelection (props) {
   return (
     <>
       <div className='bg-white'>
-        <div className='grid grid-cols-9 bg-red-300 gap-4 mt-4'>
+        <div className='grid grid-cols-9 bg-red-300 gap-6 mt-4 p-2'>
           {containers.map(container => (
             <div
               className='bg-blue-800 relative empty:shadow-[inset_0_-2px_4px_rgba(0.2,0.2,0.2,0.4)]'
@@ -163,6 +165,12 @@ function GameLettersSelection (props) {
 
                       <div className='uppercase text-4xl font-bold text-white h-20 mt-1 flex flex-col justify-center items-center bg-blue-600  empty:shadow-[inset_0_-2px_4px_rgba(0.2,0.2,0.2,0.4)]'>
                         {item.value}
+
+                        {item.value != '' && (
+                          <div className='absolute text-sm bottom-1 right-1'>
+                            {getLetterPoints(item.value)}
+                          </div>
+                        )}
                       </div>
                     </div>
                   )
@@ -171,13 +179,13 @@ function GameLettersSelection (props) {
           ))}
         </div>
 
-        <p>Answer:</p>
-
         <AnswerBox
           items={answerLetters}
           handleRemove={handleRemove}
           updateItems={updateItems}
         />
+
+        <Points answer={answerLetters} />
       </div>
     </>
   )
