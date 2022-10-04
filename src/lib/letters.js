@@ -105,10 +105,71 @@ const shuffleLetters = letters => {
   return shuffleLetters
 }
 
+//get points for each letter
+const getLetterPoints = letter => {
+  switch (letter) {
+    case 'a':
+      return 1
+    case 'b':
+      return 1
+    case 'c':
+      return 1
+    case 'd':
+      return 1
+    case 'e':
+      return 1
+    case 'f':
+      return 2
+    case 'g':
+      return 1
+    case 'h':
+      return 2
+    case 'i':
+      return 2
+    case 'j':
+      return 4
+    case 'k':
+      return 5
+    case 'l':
+      return 3
+    case 'm':
+      return 2
+    case 'n':
+      return 3
+    case 'o':
+      return 4
+    case 'p':
+      return 2
+    case 'q':
+      return 7
+    case 'r':
+      return 4
+    case 's':
+      return 1
+    case 't':
+      return 2
+    case 'u':
+      return 3
+    case 'v':
+      return 3
+    case 'w':
+      return 3
+    case 'x':
+      return 5
+    case 'y':
+      return 3
+    case 'z':
+      return 5
+    default:
+      return 1
+  }
+}
+
 module.exports = {
   getAllVowels,
   getAllConsonants,
   getShuffledVowels,
   getShuffledConsonants,
-  shuffleLetters
+  shuffleLetters,
+  getLetterPoints
 }
