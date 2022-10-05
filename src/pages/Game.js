@@ -13,7 +13,7 @@ import {
   shuffleLetters
 } from '../lib/letters'
 
-import { findWordsFromLetters } from '../lib/words'
+const worker = new Worker(new URL('../worker', import.meta.url))
 
 function Game () {
   //maximum number of letters in total allowed
@@ -143,6 +143,19 @@ function Game () {
     setResults([])
   }
 
+  //start web worker
+  useEffect(() => {
+    worker.addEventListener('message', e => {
+      console.log('received', e.data)
+
+      //update results
+      setResults(e.data)
+
+      //set isResultsLoading back to false
+      setIsResultsLoading(false)
+    })
+  }, [])
+
   //after every change to the state.letters, check if the vowel or consonant buttons should be disabled
   useEffect(() => {
     //if all letters have been picked
@@ -155,10 +168,12 @@ function Game () {
       //set game as started
       setIsStarted(true)
 
+      //set results as loading
+      setIsResultsLoading(true)
+
       //find words from selected letters and update the results state
       let newLetters = state.letters.join()
-      let res = findWordsFromLetters(newLetters)
-      setResults(res)
+      worker.postMessage(newLetters)
     }
 
     //valid vowels
