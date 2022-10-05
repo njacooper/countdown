@@ -7,7 +7,7 @@ import SelectedLetters from '../components/SelectedLetters'
 
 import Results from '../components/Results'
 
-import { findWordsFromLetters } from '../lib/words'
+const worker = new Worker(new URL('../worker', import.meta.url))
 
 function ManualLetters () {
   //valid letters for key handler
@@ -124,17 +124,27 @@ function ManualLetters () {
     }
   }, [letters])
 
+  //start web worker
+  useEffect(() => {
+    worker.addEventListener('message', e => {
+      console.log('received', e.data)
+
+      //update results
+      setResults(e.data)
+
+      //set isResultsLoading back to false
+      setIsResultsLoading(false)
+    })
+  }, [])
+
   //track whether results should be retrieved and loaded
   useEffect(() => {
     if (isResultsLoading == true) {
       //convert selected letters array to string
       let newLetters = letters.join()
 
-      //find words from selected letters
-      let res = findWordsFromLetters(newLetters)
-
-      //update the results
-      setResults(res)
+      //post letters to web worker
+      worker.postMessage(newLetters)
     }
   }, [isResultsLoading])
 
@@ -157,8 +167,8 @@ function ManualLetters () {
 
   return (
     <>
-      <div className='bg-blue-400 mx-auto py-4 mt-6'>
-        <div className='p-4'>
+      <div className='bg-blue-400 md:w-[950px] px-4 justify-center mx-auto'>
+        <div className=''>
           <h2 className='font-bold text-2xl py-4'>Alphabet</h2>
           <LetterSelection
             lettersSelectionDisabled={lettersSelectionDisabled}
