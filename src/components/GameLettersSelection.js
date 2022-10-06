@@ -140,19 +140,19 @@ function GameLettersSelection (props) {
   //pass the updated answer to the component above
   useEffect(() => {
     let newAnswer = ''
-    answerLetters.map(letter=>{
-        newAnswer += letter.value
+    answerLetters.map(letter => {
+      newAnswer += letter.value
     })
     props.updateAnswer(newAnswer)
   }, [answerLetters])
 
   return (
     <>
-      <div className='bg-white'>
-        <div className='grid grid-cols-9 bg-red-300 gap-6 mt-4 p-2'>
+      <div className=''>
+        <div className='grid grid-cols-9 gap-1 mt-4'>
           {containers.map(container => (
             <div
-              className='bg-blue-800 relative empty:shadow-[inset_0_-2px_4px_rgba(0.2,0.2,0.2,0.4)]'
+              className='h-20 lg:h-24 rounded-xl lg:aspect-square bg-blue-800 text-white border-2 border-blue-500 border-solid font-bold relative'
               key={container}
             >
               {items.map(
@@ -160,27 +160,38 @@ function GameLettersSelection (props) {
                   item.container == container && (
                     <div key={item.id}>
                       {item.value != '' && (
-                        <button
-                          onClick={() => handleAdd(container)}
-                          className={
-                            !isStarted
-                              ? 'hidden'
-                              : 'rounded-full p-0 -top-2 -right-2 absolute bg-blue-900 text-white text-base w-6 h-6'
-                          }
-                        >
-                          +
-                        </button>
+                        <>
+                          {item.value != '' ? (
+                            <>
+                              <div className='place-items-center flex justify-center bg-blue-500 py-1 h-7 rounded-t-xl'>
+                                <button
+                                  onClick={() => handleAdd(container)}
+                                  disabled={isStarted}
+                                  className={
+                                    'rounded-full p-0 justify-center bg-blue-900 text-white text-base w-6 h-6 disabled:bg-stone-400 disabled:cursor-not-allowed'
+                                  }
+                                >
+                                  +
+                                </button>
+                              </div>
+
+                              <div className='rounded-b-xl h-16 uppercase text-2xl lg:text-4xl font-bold text-white flex flex-col justify-center items-center bg-blue-600  empty:shadow-[inset_0_-2px_4px_rgba(0.2,0.2,0.2,0.4)]'>
+                                {item.value}
+
+                                {item.value != '' && (
+                                  <div className='absolute text-sm bottom-1 right-1 hidden'>
+                                    {getLetterPoints(item.value)}
+                                  </div>
+                                )}
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              <div className='bg-blue-500 py-1 h-24 rounded-t-xl'></div>
+                            </>
+                          )}
+                        </>
                       )}
-
-                      <div className='uppercase text-4xl font-bold text-white h-20 mt-1 flex flex-col justify-center items-center bg-blue-600  empty:shadow-[inset_0_-2px_4px_rgba(0.2,0.2,0.2,0.4)]'>
-                        {item.value}
-
-                        {item.value != '' && (
-                          <div className='absolute text-sm bottom-1 right-1'>
-                            {getLetterPoints(item.value)}
-                          </div>
-                        )}
-                      </div>
                     </div>
                   )
               )}
