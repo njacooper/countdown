@@ -58,4 +58,24 @@
     @apply h-2 absolute left-0 right-0 -bottom-3 bg-blue-400 z-0 rounded-lg
 }
 
+
+footer {
+    @apply py-4 bg-blue-900
+  }
+  .footerWrapper {
+    @apply !important
+  }
+
+  .footerLinks {
+    @apply block md:flex md:gap-10 
+  }
+  .footerLinks p, .footerLinks a {
+    @apply py-4 md:py-0
+  }
+
+  .footerLinks>a svg {
+    @apply mr-2
+  }
+
+
 }

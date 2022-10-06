@@ -697,6 +697,40 @@ button:active {
   background-color: rgb(96 165 250 / var(--tw-bg-opacity));
 }
 
+footer {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.footerLinks {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .footerLinks {
+    display: flex;
+    gap: 2.5rem;
+  }
+}
+
+.footerLinks p,  .footerLinks a {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .footerLinks p,  .footerLinks a {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}
+
+.footerLinks>a svg {
+  margin-right: 0.5rem;
+}
+
 .visible {
   visibility: visible;
 }
@@ -759,6 +793,10 @@ button:active {
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.ml-1 {
+  margin-left: 0.25rem;
 }
 
 .mt-4 {
@@ -857,6 +895,10 @@ button:active {
   min-height: 100vh;
 }
 
+.w-\[950px\] {
+  width: 950px;
+}
+
 .w-full {
   width: 100%;
 }
@@ -881,6 +923,10 @@ button:active {
 
 .shrink {
   flex-shrink: 1;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
 
 .grow {
@@ -1284,6 +1330,10 @@ button:active {
 .hover\:bg-red-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(153 27 27 / var(--tw-bg-opacity));
+}
+
+.hover\:underline:hover {
+  text-decoration-line: underline;
 }
 
 @media (min-width: 768px) {
