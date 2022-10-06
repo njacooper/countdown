@@ -46,7 +46,7 @@ function SelectedLetters (props) {
                     -
                   </button>
                 </div>
-                <div className='bg-blue-400 p-2 rounded-b-xl h-12 lg:h-14 text-2xl'>
+                <div className='bg-blue-700 p-2 rounded-b-xl h-12 lg:h-[2.5em] text-2xl'>
                   {letter}
                 </div>
               </div>
