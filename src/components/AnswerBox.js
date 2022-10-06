@@ -29,7 +29,7 @@ function AnswerBox (props) {
       emptyCells.push(
         <div
           key={i}
-          className='bg-blue-400 relative h-20 m-2 shadow-[inset_0_-2px_4px_rgba(0.2,0.2,0.2,0.4)]'
+          className='place-items-center flex justify-center bg-blue-800 py-1 rounded-xl h-24'
         ></div>
       )
     }
@@ -46,10 +46,10 @@ function AnswerBox (props) {
           strategy={horizontalListSortingStrategy}
           collisionDetection={closestCenter}
         >
-          <div className='grid grid-cols-9 bg-blue-100 gap-1 h-24'>
+          <div className='grid grid-cols-9 gap-1 h-24 mt-4 mb-4'>
             {items.map(item => (
               <React.Fragment key={item.id}>
-                <div className=' relative h-20 m-2'>
+                <div className='relative'>
                   <AnswerItem
                     handle={true}
                     key={item?.id}

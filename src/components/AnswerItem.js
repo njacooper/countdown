@@ -17,28 +17,32 @@ const AnswerItem = props => {
   const style = {
     transition,
     transform: CSS.Transform.toString(transform),
-    border: '4px solid white'
+    border: '0px solid white'
   }
 
   return (
     <>
-      <div style={style} className='bg-blue-500 relative h-20'>
+    
+      <div style={style} className='bg-blue-800 rounded-xl relative h-24'>
         <div className='' ref={setNodeRef}>
-          <button
-            onClick={() => props.handleRemove(props)}
-            className='rounded-full p-0 -top-2 -right-2 absolute bg-red-500 text-white text-base w-6 h-6'
-          >
-            -
-          </button>
+          <div className='flex justify-center place-items-center bg-blue-600 py-1 w-full rounded-t-xl py-1'>
+            
+            <button
+              onClick={() => props.handleRemove(props)}
+              className='rounded-full p-0 justify-center bg-red-900 text-white text-base w-6 h-6'
+            >
+              -
+            </button>
+          </div>
 
           <div
-            className='uppercase text-4xl font-bold text-white h-20 flex flex-col justify-center items-center'
+            className='uppercase text-xl lg:text-4xl font-bold text-white flex flex-col justify-center items-center bg-blue-400 rounded-b-xl h-16'
             {...listeners}
             {...attributes}
           >
             {props.value}
 
-            <div className='absolute text-sm bottom-1 right-1'>
+            <div className='absolute text-sm bottom-1 right-1 hidden'>
               {getLetterPoints(props.value)}
             </div>
           </div>
