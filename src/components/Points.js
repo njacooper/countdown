@@ -17,8 +17,11 @@ function Points (props) {
 
     if (answer.length > 2 && wordExists) {
       let newPoints = 0
-      for (let i = 0; i < answer.length; i++) {
-        newPoints += +getLetterPoints(answer[i])
+      let wordLength = answer.length
+      if (wordLength == 9) {
+        newPoints = 18
+      } else {
+        newPoints = wordLength
       }
       setPoints(newPoints)
     } else {
@@ -28,9 +31,11 @@ function Points (props) {
 
   return (
     <>
-      <div className='flex items-center my-2 border-4 border-solid border-blue-700 bg-blue-800 rounded-xl'>
-        <div className='font-bold text-4xl align-middle px-4 text-white'>Points:</div>
-        <p className='w-fit p-4 text-white text-sm lg:text-5xl font-bold'>
+      <div className='flex items-center border-4 border-solid border-blue-700 bg-blue-800 rounded-xl'>
+        <div className='font-bold text-xl md:text-5xl align-middle px-4 text-stone-100'>
+          Points:
+        </div>
+        <p className='w-fit p-4 text-white text-2xl lg:text-5xl font-bold'>
           {points && points}
         </p>
       </div>
