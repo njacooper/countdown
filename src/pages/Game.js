@@ -297,14 +297,14 @@ function Game () {
           <div className='w-fit flex'>
             <button
               disabled={consonantDisabled}
-              className='raisedButton aspect-auto'
+              className='raisedButton aspect-auto text-sm md:text-2xl px-3'
               onClick={handleGetConsonant}
             >
               CONSONANT
             </button>
             <button
               onClick={handleAuto}
-              className='raisedButton aspect-auto'
+              className='raisedButton aspect-auto text-sm md:text-2xl p-3'
               disabled={autoDisabled}
             >
               AUTO
@@ -312,7 +312,7 @@ function Game () {
 
             <button
               disabled={vowelDisabled}
-              className='raisedButton aspect-auto'
+              className='raisedButton aspect-auto text-sm md:text-2xl p-3'
               onClick={handleGetVowel}
             >
               VOWEL
@@ -335,7 +335,7 @@ function Game () {
             className={
               results == null
                 ? 'hidden ease-in-out duration-300'
-                : 'raisedButton aspect-auto text-2xl ease-in-out duration-300'
+                : 'raisedButton aspect-auto text-lg md:text-2xl ease-in-out duration-300'
             }
             onClick={handleShowSolutionsModal}
           >

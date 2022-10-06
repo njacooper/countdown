@@ -152,30 +152,29 @@ function GameLettersSelection (props) {
         <div className='grid grid-cols-9 gap-1 mt-4'>
           {containers.map(container => (
             <div
-              className='h-20 lg:h-24 rounded-xl lg:aspect-square bg-blue-800 text-white border-2 border-blue-500 border-solid font-bold relative'
+              className='h-20 lg:h-24 rounded-xl lg:aspect-square bg-blue-800 text-white border-2 border-blue-900 border-solid font-bold relative'
               key={container}
             >
               {items.map(
                 item =>
                   item.container == container && (
                     <div key={item.id}>
-                      {item.value != '' && (
                         <>
                           {item.value != '' ? (
                             <>
-                              <div className='place-items-center flex justify-center bg-blue-500 py-1 h-7 rounded-t-xl'>
+                              <div className='place-items-center flex justify-center bg-blue-900 py-1 h-7 rounded-t-xl'>
                                 <button
                                   onClick={() => handleAdd(container)}
-                                  disabled={isStarted}
+                                  disabled={!isStarted}
                                   className={
-                                    'rounded-full p-0 justify-center bg-blue-900 text-white text-base w-6 h-6 disabled:bg-stone-400 disabled:cursor-not-allowed'
+                                    'rounded-full p-0 justify-center bg-blue-700 hover:bg-blue-900 text-white text-base w-6 h-6 disabled:bg-stone-400 disabled:cursor-not-allowed'
                                   }
                                 >
                                   +
                                 </button>
                               </div>
 
-                              <div className='rounded-b-xl h-16 uppercase text-2xl lg:text-4xl font-bold text-white flex flex-col justify-center items-center bg-blue-600  empty:shadow-[inset_0_-2px_4px_rgba(0.2,0.2,0.2,0.4)]'>
+                              <div className='rounded-b-xl h-12 md:h-16 uppercase text-2xl lg:text-4xl font-bold text-white flex flex-col justify-center items-center bg-blue-600  empty:shadow-[inset_0_-2px_4px_rgba(0.2,0.2,0.2,0.4)]'>
                                 {item.value}
 
                                 {item.value != '' && (
@@ -187,11 +186,10 @@ function GameLettersSelection (props) {
                             </>
                           ) : (
                             <>
-                              <div className='bg-blue-500 py-1 h-24 rounded-t-xl'></div>
+                              <div className='bg-blue-800 py-1 rounded-xl h-8 md:h-[5.7em]'></div>
                             </>
                           )}
                         </>
-                      )}
                     </div>
                   )
               )}
