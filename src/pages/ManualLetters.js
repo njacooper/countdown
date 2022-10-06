@@ -95,7 +95,7 @@ function ManualLetters () {
   const [letters, setLetters] = useState([])
 
   //results
-  const [results, setResults] = useState([])
+  const [results, setResults] = useState(null)
 
   //is results loading
   const [isResultsLoading, setIsResultsLoading] = useState(false)
@@ -161,37 +161,57 @@ function ManualLetters () {
   //handle clear by resetting the letters, results and results loading state
   function handleClear () {
     setLetters([])
-    setResults([])
+    setResults(null)
     setIsResultsLoading(false)
   }
 
   return (
     <>
-      <div className='bg-blue-400 md:w-[950px] px-4 justify-center mx-auto'>
-        <div className=''>
+      <div className='md:w-[950px] justify-center mx-auto pb-4 mt-4 rounded px-2'>
+        <div className='py-2 pb-6'>
           <h2 className='font-bold text-2xl py-4'>Alphabet</h2>
+          <h3 className='text-base text-stone-600'>
+            Choose some letters from below to find words with
+          </h3>
           <LetterSelection
             lettersSelectionDisabled={lettersSelectionDisabled}
             handleAddLetter={handleAddLetter}
           />
 
-          <h2 className='font-bold text-2xl py-4'>Letters</h2>
+          <h2 className='mt-4 font-bold text-2xl py-4'>Letters</h2>
 
           <SelectedLetters
             letters={letters}
             handleRemoveLetter={handleRemoveLetter}
           />
 
-          <button onClick={handleFindWords} className='text-3xl font-bold'>
+          <button
+            onClick={handleFindWords}
+            className='raisedButton text-3xl font-bold'
+          >
             Find Words
           </button>
 
-          <button onClick={handleClear} className='text-3xl font-bold ml-4'>
+          <button
+            onClick={handleClear}
+            className='raisedButton text-3xl font-bold ml-4'
+          >
             Clear
           </button>
-
-          {isResultsLoading ? <p>Loading...</p> : <Results results={results} />}
         </div>
+
+        {results !== null ? (
+          <div className='bg-stone-50 mt-6 mb-6 rounded'>
+            <h2 className='text-2xl p-4 font-bold'>Found Words:</h2>
+            <div className='p-4 bg-stone-200 rounded-b'>
+              {isResultsLoading ? (
+                <p>Loading...</p>
+              ) : (
+                <Results results={results} />
+              )}
+            </div>
+          </div>
+        ) : null}
       </div>
     </>
   )
