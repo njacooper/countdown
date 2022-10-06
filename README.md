@@ -1,6 +1,9 @@
 # Counting Down
 
-## TODO
-[] Install tailwind css
-[] Create navigation component
-[] Write tests for main app functions
+## What's Next
+
+- Accessibility improvements
+- Mobile UI improvements needed
+- A page for the conundrum
+- Implementing the numbers game
+- Further refactoring
