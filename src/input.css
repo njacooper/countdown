@@ -2,10 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+
+    h3 {
+        @apply text-xl font-bold mb-3
+    }
+
+    button {
+        @apply bg-blue-700 text-white font-bold px-6 py-4 rounded
+    }
+    button:hover {
+        @apply bg-blue-800 
+    }
+
+    button:active {
+        @apply bg-blue-900
+    }
+
+}
+
 
 @layer components {
 
-    button {
-        @apply px-4 py-2 bg-blue-700 rounded text-white font-bold
-    }
+.raisedButton {
+    @apply shadow-btn-3d border-solid border-2 border-[#012c7a] rounded-xl m-1 relative top-0 ease-in-out duration-300
+}
+
+.raisedButton:hover {
+    @apply shadow-btn-3d-hover border-solid border-2 border-[#012c7a] rounded-xl top-0 bg-blue-800
+}
+
+.raisedButton:active {
+    @apply shadow-btn-3d-active border-solid border-2 border-[#012c7a] rounded-xl m-1 top-1
+}
+.raisedButton:disabled {
+    @apply shadow-btn-3d-active border-solid border-2 border-[#012c7a] rounded-xl m-1 top-2 bg-gray-400 cursor-not-allowed text-black
+}
+
+
 }
