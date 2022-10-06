@@ -188,12 +188,16 @@ function Game () {
 
   //after every change to the state.letters, check if the vowel or consonant buttons should be disabled
   useEffect(() => {
+    //if manually picking vowels and consonants disable the auto button
+    if (state.letters.length >= 1) {
+      setAutoDisabled(true)
+    }
+
     //if all letters have been picked
     if (state.letters.length == 9) {
       //disable buttons
       setVowelDisabled(true)
       setConsonantDisabled(true)
-      setAutoDisabled(true)
 
       //set game as started
       setIsStarted(true)
