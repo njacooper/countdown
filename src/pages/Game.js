@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState, useEffect, useReducer } from 'react'
 
+import Modal from 'react-modal'
+
 import GameLettersSelection from '../components/GameLettersSelection'
 
 import Points from '../components/Points'
@@ -35,10 +37,38 @@ function Game () {
   const [answer, setAnswer] = useState('')
 
   //store results
-  const [results, setResults] = useState([])
+  const [results, setResults] = useState(null)
 
   //for use whilst results are loading
   const [isResultsLoading, setIsResultsLoading] = useState(false)
+
+  //modal functions for the solutions modal and game rules modal
+  const [showSolutionsModal, setShowSolutionsModal] = useState(false)
+
+  //handle show solutions modal
+  function handleShowSolutionsModal () {
+    setShowSolutionsModal(true)
+  }
+
+  //handle close solutions modal
+  function handleCloseSolutionsModal () {
+    setShowSolutionsModal(false)
+  }
+
+  //styling for the solutions modal
+  const solutionsBoxStyle = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      maxHeight: '80%',
+      maxWidth: '90%',
+      transform: 'translate(-50%, -50%)',
+      zIndex: '1',
+      padding: '0'
+    }
+  }
 
   //reducer for handling the picking of vowel and consonants along with the selected letters state
   const reducer = (state, action) => {
@@ -140,7 +170,7 @@ function Game () {
     setAutoDisabled(false)
 
     //reset the results
-    setResults([])
+    setResults(null)
   }
 
   //start web worker
@@ -242,32 +272,52 @@ function Game () {
 
   return (
     <>
-      <div className='bg-blue-400 my-4 lg:w-[950px] px-4 justify-center mx-auto'>
-        <div className='grid grid-cols-3 gap-2'>
+      <div className='lg:w-[950px] justify-center flex pb-2'>
+        <div className='flex w-full'>
           <button
-            disabled={consonantDisabled}
-            className='text-sm md:text-3xl font-bold uppercase text-white disabled:bg-gray-400 disabled:cursor-not-allowed disabled:text-opacity-30'
-            onClick={handleGetConsonant}
+            className='raisedButton rounded-full hover:rounded-full w-fit'
+            onClick={handleReset}
           >
-            CONSONANT
-          </button>
-          <button
-            onClick={handleAuto}
-            className='text-sm md:text-3xl w-full disabled:bg-stone-400 disabled:text-opacity-30 disabled:cursor-not-allowed'
-            disabled={autoDisabled}
-          >
-            AUTO
-          </button>
-
-          <button
-            disabled={vowelDisabled}
-            className='text-sm md:text-3xl font-bold uppercase text-white p-4 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:text-opacity-30'
-            onClick={handleGetVowel}
-          >
-            VOWEL
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='24'
+              height='24'
+              viewBox='0 0 64 64'
+              className='stroke-2 stroke-white fill-white'
+            >
+              <path d='M 29.304688 6 C 28.628562 5.99325 28 6.5305156 28 7.2910156 L 28 10.371094 C 17.7734 12.258417 10 21.235533 10 32 C 10 44.131 19.869 54 32 54 C 44.131 54 54 44.131 54 32 C 54 25.04 50.650969 18.41625 45.042969 14.28125 C 44.153969 13.62525 42.899094 13.815125 42.246094 14.703125 C 41.590094 15.592125 41.779922 16.845953 42.669922 17.501953 C 47.259922 20.885953 50 26.306 50 32 C 50 41.925 41.925 50 32 50 C 22.075 50 14 41.925 14 32 C 14 23.451418 19.9965 16.290829 28 14.464844 L 28 16.708984 C 28 17.722984 29.116609 18.340781 29.974609 17.800781 L 37.316406 13.177734 C 38.184406 12.631734 38.184406 11.366312 37.316406 10.820312 L 29.974609 6.1992188 C 29.760109 6.0642188 29.530062 6.00225 29.304688 6 z'></path>
+            </svg>
           </button>
         </div>
+        <div className='flex'>
+          <div className='w-fit flex'>
+            <button
+              disabled={consonantDisabled}
+              className='raisedButton aspect-auto'
+              onClick={handleGetConsonant}
+            >
+              CONSONANT
+            </button>
+            <button
+              onClick={handleAuto}
+              className='raisedButton aspect-auto'
+              disabled={autoDisabled}
+            >
+              AUTO
+            </button>
 
+            <button
+              disabled={vowelDisabled}
+              className='raisedButton aspect-auto'
+              onClick={handleGetVowel}
+            >
+              VOWEL
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div>
         <GameLettersSelection
           letters={state.letters}
           isStarted={isStarted}
@@ -275,23 +325,41 @@ function Game () {
         />
 
         <div className='justify-between flex'>
+          <Points answer={answer} />
+
           <button
-            className='text-3xl font-bold uppercase text-white p-4'
-            onClick={handleReset}
+            className={
+              results == null
+                ? 'hidden ease-in-out duration-300'
+                : 'raisedButton aspect-auto text-2xl ease-in-out duration-300'
+            }
+            onClick={handleShowSolutionsModal}
           >
-            RESET
+            See Solutions
           </button>
-
-          <div className='bg-blue-400 flex items-center my-2 border-4 border-solid border-blue-800'>
-            <div className='font-bold text-4xl align-middle mr-6 px-4'>
-              Points:
-            </div>
-            <Points answer={answer} />
-          </div>
         </div>
-
-        {isResultsLoading ? <p>Loading...</p> : <Results results={results} />}
       </div>
+
+      <Modal
+        isOpen={showSolutionsModal}
+        onRequestClose={handleCloseSolutionsModal}
+        contentLabel='Results Modal'
+        ariaHideApp={false}
+        style={solutionsBoxStyle}
+      >
+        <div className='modalHeading sticky top-0 z-50 bg-stone-200 px-4 py-2 flex justify-between'>
+          <h2 className='font-bold text-2xl'>Solutions</h2>
+          <button
+            onClick={handleCloseSolutionsModal}
+            className='p-0 bg-transparent text-3xl font-bold text-black'
+          >
+            x
+          </button>
+        </div>
+        <div className='p-4'>
+          {isResultsLoading ? <p>Loading...</p> : <Results results={results} />}
+        </div>
+      </Modal>
     </>
   )
 }
