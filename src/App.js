@@ -24,9 +24,9 @@ function App () {
           <div className='footerWrapper w-[950px] flex justify-center'>
             <div className='footerLinks flex'>
 
-                <a href='https://nealcooper.dev' target="_blank" className='text-white hover:underline'>Made by Neal Cooper</a>
+                <a href='https://nealcooper.dev' target="_blank" className='text-white hover:underline font-bold'>Made by Neal Cooper</a>
 
-                <a href='https://www.buymeacoffee.com/nealcooper' target="_blank" className='flex text-white hover:underline'>
+                <a href='https://www.buymeacoffee.com/nealcooper' target="_blank" className='flex text-white hover:underline font-bold'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='24'
