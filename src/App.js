@@ -22,7 +22,7 @@ function App () {
         </div>
         <footer className='mainFooter flex justify-center'>
           <div className='footerWrapper w-[950px] flex justify-center'>
-            <div className='footerLinks flex'>
+            <div className='footerLinks block sm:flex gap-10'>
 
                 <a href='https://nealcooper.dev' target="_blank" className='text-white hover:underline font-bold'>Made by Neal Cooper</a>
 
