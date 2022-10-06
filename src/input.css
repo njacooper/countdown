@@ -40,4 +40,22 @@
 }
 
 
+.navigation .active{
+    @apply !important
+}
+
+.navigation li{
+    @apply relative
+}
+.navigation li a{
+    @apply p-2 px-4 inline-block
+}
+.navigation li:hover{
+    @apply bg-blue-800 rounded-2xl
+}
+
+.navigation .active{
+    @apply h-2 absolute left-0 right-0 -bottom-3 bg-blue-400 z-0 rounded-lg
+}
+
 }
