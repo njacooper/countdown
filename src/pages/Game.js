@@ -58,13 +58,13 @@ function Game () {
   //styling for the solutions modal
   const solutionsBoxStyle = {
     content: {
-      top: '50%',
-      left: '50%',
+      top: '20%',
+      left: '15%',
       right: 'auto',
       bottom: 'auto',
       maxHeight: '80%',
-      maxWidth: '90%',
-      transform: 'translate(-50%, -50%)',
+      maxWidth: '85%',
+      transform: 'translate(-10%, -10%)',
       zIndex: '1',
       padding: '0'
     }
@@ -351,7 +351,7 @@ function Game () {
         ariaHideApp={false}
         style={solutionsBoxStyle}
       >
-        <div className='modalHeading sticky top-0 z-50 bg-stone-200 px-4 py-2 flex justify-between'>
+        <div className='modalHeading sticky top-0 z-0 bg-stone-200 px-4 py-2 flex justify-between'>
           <h2 className='font-bold text-2xl'>Solutions</h2>
           <button
             onClick={handleCloseSolutionsModal}
