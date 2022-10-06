@@ -62,9 +62,6 @@
 footer {
     @apply py-4 bg-blue-900
   }
-  .footerWrapper {
-    @apply !important
-  }
 
   .footerLinks {
     @apply block md:flex md:gap-10 
