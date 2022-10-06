@@ -14,7 +14,7 @@ function App () {
     <div className='bg-blue-500 min-h-screen'>
       <main className='bg-[#a0c9ff] min-h-screen flex flex-col'>
         <Navigation />
-        <div className='mx-auto h-full flex-grow'>
+        <div className='mx-auto h-full flex-grow py-6 px-2'>
           <Routes>
             <Route path='/' element={<Game />} />
             <Route path='manual' element={<ManualLetters />} />
@@ -23,11 +23,10 @@ function App () {
         <footer className='mainFooter flex justify-center'>
           <div className='footerWrapper w-[950px] flex justify-center'>
             <div className='footerLinks flex'>
-              <Link href='https://nealcooper.dev'>
-                <a className='text-white hover:underline'>Made by Neal Cooper</a>
-              </Link>
-              <Link href='https://www.buymeacoffee.com/nealcooper'>
-                <a className='flex text-white hover:underline'>
+
+                <a href='https://nealcooper.dev' target="_blank" className='text-white hover:underline'>Made by Neal Cooper</a>
+
+                <a href='https://www.buymeacoffee.com/nealcooper' target="_blank" className='flex text-white hover:underline'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='24'
@@ -48,7 +47,6 @@ function App () {
                   </svg>
                   <span className='ml-1'>Buy Me a Coffee</span>
                 </a>
-              </Link>
             </div>
           </div>
         </footer>
