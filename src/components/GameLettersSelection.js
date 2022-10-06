@@ -167,7 +167,7 @@ function GameLettersSelection (props) {
                                   onClick={() => handleAdd(container)}
                                   disabled={!isStarted}
                                   className={
-                                    'rounded-full p-0 justify-center bg-blue-700 hover:bg-blue-900 text-white text-base w-6 h-6 disabled:bg-stone-400 disabled:cursor-not-allowed'
+                                    'rounded-full p-0 justify-center bg-blue-700 hover:bg-blue-500 text-white text-base w-6 h-6 disabled:bg-stone-400 disabled:cursor-not-allowed'
                                   }
                                 >
                                   +
