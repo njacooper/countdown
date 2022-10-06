@@ -167,11 +167,11 @@ function ManualLetters () {
 
   return (
     <>
-      <div className='md:w-[950px] justify-center mx-auto pb-4 mt-4 rounded px-2'>
-        <div className='py-2 pb-6'>
-          <h2 className='font-bold text-2xl py-4'>Alphabet</h2>
+      <div className='md:w-[950px] justify-center'>
+        <div className='pb-6'>
+          <h2 className='font-bold text-2xl pb-4'>Alphabet</h2>
           <h3 className='text-base text-stone-600'>
-            Choose some letters from below to find words with
+            First choose some letters and then find out what words those letters make!
           </h3>
           <LetterSelection
             lettersSelectionDisabled={lettersSelectionDisabled}
