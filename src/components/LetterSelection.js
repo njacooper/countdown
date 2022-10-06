@@ -44,23 +44,18 @@ function LetterSelection (props) {
 
   return (
     <>
-      <div className='grid grid-cols-9 gap-4 items-center text-center uppercase'>
+      <div className='grid grid-cols-6 md:grid-cols-9 gap-1 md:gap-4 items-center text-center uppercase'>
         {alphabet.map(letter => (
-          <div
+          <button
             key={letter}
-            className='h-20 p-2 py-4 bg-blue-800 text-white border-2 border-blue-100 border-solid font-bold relative items-center justify-center flex flex-col'
+            className='raisedButton aspect-square uppercase text-xl lg:text-2xl mb-3 p-0'
+            disabled={lettersSelectionDisabled}
+            onClick={() => {
+              handleAddLetter(letter)
+            }}
           >
-            <button
-              disabled={lettersSelectionDisabled}
-              className='font-bold text-xs rounded-full w-6 h-6 bg-green-600 text-white absolute -top-3 -right-3 p-0 disabled:bg-stone-400 disabled:cursor-not-allowed'
-              onClick={() => {
-                handleAddLetter(letter)
-              }}
-            >
-              +
-            </button>
             {letter}
-          </div>
+          </button>
         ))}
       </div>
     </>
