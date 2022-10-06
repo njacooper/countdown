@@ -31,25 +31,29 @@ function SelectedLetters (props) {
   }
   return (
     <>
-      <div className='grid grid-cols-9 gap-4 items-center text-center mb-6 empty:bg-red-400'>
+      <div className='grid grid-cols-9 gap-2 items-center text-center mb-6 empty:bg-red-400'>
         {lettersContainers.map((letter, index) =>
           letter != '' ? (
             <React.Fragment key={index}>
-              <div className='p-2 py-4 bg-blue-800 text-white border-2 border-blue-100 border-solid font-bold relative h-20 uppercase items-center justify-center flex flex-col'>
-                <button
-                  className='font-bold text-xs rounded-full w-6 h-6 bg-red-600 text-white absolute -top-3 -right-3 p-0'
-                  onClick={() => {
-                    handleRemoveLetter(index)
-                  }}
-                >
-                  -
-                </button>
-                {letter}
+              <div className='h-20 lg:h-24 rounded-xl lg:aspect-square bg-blue-500 text-white border-2 border-blue-500 border-solid font-bold relative uppercase'>
+                <div className='bg-blue-800 rounded-t-xl py-1'>
+                  <button
+                    className='font-bold text-[10px] lg:text-[12px] rounded-full w-5 h-5 p-0 bg-red-600 hover:bg-red-800 text-white'
+                    onClick={() => {
+                      handleRemoveLetter(index)
+                    }}
+                  >
+                    -
+                  </button>
+                </div>
+                <div className='bg-blue-400 p-2 rounded-b-xl h-12 lg:h-14 text-2xl'>
+                  {letter}
+                </div>
               </div>
             </React.Fragment>
           ) : (
             <React.Fragment key={index}>
-              <div className='p-2 py-4 bg-blue-800 text-white border-2 border-blue-100 border-solid font-bold relative h-20'></div>
+              <div className='h-20 lg:h-24 rounded-xl lg:aspect-square p-2 py-4 bg-blue-800 text-white border-2 border-blue-500 border-solid font-bold relative'></div>
             </React.Fragment>
           )
         )}
