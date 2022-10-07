@@ -8,24 +8,13 @@
         @apply text-xl font-bold mb-3
     }
 
-    button {
-        @apply bg-blue-700 text-white font-bold px-6 py-4 rounded
-    }
-    button:hover {
-        @apply bg-blue-800 
-    }
-
-    button:active {
-        @apply bg-blue-900
-    }
-
 }
 
 
 @layer components {
 
 .raisedButton {
-    @apply shadow-btn-3d border-solid border-2 border-[#012c7a] rounded-xl m-1 relative top-0 ease-in-out duration-300
+    @apply shadow-btn-3d border-solid border-2 border-[#012c7a] rounded-xl m-1 relative top-0 ease-in-out duration-300 bg-blue-700 text-white font-bold px-6 py-4
 }
 
 .raisedButton:hover {
