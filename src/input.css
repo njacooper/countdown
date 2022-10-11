@@ -14,18 +14,18 @@
 @layer components {
 
 .raisedButton {
-    @apply shadow-btn-3d border-solid border-2 border-[#012c7a] rounded-xl m-1 relative top-0 ease-in-out duration-300 bg-blue-700 text-white font-bold px-6 py-4
+    @apply shadow-btn-3d border-solid border-2 border-[#012c7a] rounded-xl mt-0 relative top-0 ease-in-out duration-300 bg-blue-700 text-white font-bold px-6 py-4 m-0
 }
 
 .raisedButton:hover {
-    @apply shadow-btn-3d-hover border-solid border-2 border-[#012c7a] rounded-xl top-0 bg-blue-800
+    @apply shadow-btn-3d-hover border-solid border-2 border-[#012c7a] rounded-xl top-0 bg-blue-800 m-0
 }
 
 .raisedButton:active {
-    @apply shadow-btn-3d-active border-solid border-2 border-[#012c7a] rounded-xl m-1 top-1
+    @apply shadow-btn-3d-active border-solid border-2 border-[#012c7a] rounded-xl top-1 m-0
 }
 .raisedButton:disabled {
-    @apply shadow-btn-3d-active border-solid border-2 border-[#012c7a] rounded-xl m-1 top-2 bg-gray-400 cursor-not-allowed text-black
+    @apply shadow-btn-3d-active border-solid border-2 border-[#012c7a] rounded-xl top-2 bg-gray-400 cursor-not-allowed text-black m-0
 }
 
 
@@ -63,5 +63,16 @@ footer {
     @apply mr-2
   }
 
+  .pointsBox {
+    @apply flex items-center bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl
+  }
+
+  .pointsBox .pointsTitle {
+    @apply font-bold text-xl md:text-5xl align-middle px-4 text-stone-50
+  }
+
+  .pointsBox .pointsTotal {
+    @apply w-fit p-4 text-stone-50 text-2xl lg:text-5xl font-bold
+   }
 
 }

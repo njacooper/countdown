@@ -276,7 +276,7 @@ function Game () {
 
   return (
     <>
-      <div className='lg:w-[950px] justify-center flex pb-2'>
+      <div className='lg:w-[950px] justify-center flex pb-2 gap-3'>
         <div className='flex w-full'>
           <button
             className='raisedButton rounded-full hover:rounded-full w-fit'
@@ -294,7 +294,7 @@ function Game () {
           </button>
         </div>
         <div className='flex'>
-          <div className='w-fit flex'>
+          <div className='w-fit flex gap-1'>
             <button
               disabled={consonantDisabled}
               className='raisedButton aspect-auto text-sm md:text-2xl px-3'
@@ -335,7 +335,7 @@ function Game () {
             className={
               results == null
                 ? 'hidden ease-in-out duration-300'
-                : 'raisedButton aspect-auto text-lg md:text-2xl ease-in-out duration-300'
+                : 'raisedButton aspect-auto text-lg md:text-2xl ease-in-out duration-300 h-full'
             }
             onClick={handleShowSolutionsModal}
           >

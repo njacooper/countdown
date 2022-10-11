@@ -187,14 +187,14 @@ function ManualLetters () {
 
           <button
             onClick={handleFindWords}
-            className='raisedButton text-3xl font-bold'
+            className='raisedButton text-xl font-bold'
           >
             Find Words
           </button>
 
           <button
             onClick={handleClear}
-            className='raisedButton text-3xl font-bold ml-4'
+            className='raisedButton text-xl font-bold ml-4'
           >
             Clear
           </button>
