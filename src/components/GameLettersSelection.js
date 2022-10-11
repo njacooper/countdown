@@ -152,7 +152,7 @@ function GameLettersSelection (props) {
         <div className='grid grid-cols-9 gap-1 mt-4'>
           {containers.map(container => (
             <div
-              className='h-20 lg:h-24 rounded-xl lg:aspect-square bg-blue-800 text-white border-2 border-blue-900 border-solid font-bold relative'
+              className='h-20 lg:h-[5.8rem] rounded-xl lg:aspect-auto bg-blue-800 text-white border-2 border-blue-900 border-solid font-bold relative box-content'
               key={container}
             >
               {items.map(
