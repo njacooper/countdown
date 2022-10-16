@@ -588,7 +588,6 @@ h3 {
   position: relative;
   top: 0px;
   margin: 0px;
-  margin-top: 0px;
   border-radius: 0.75rem;
   border-width: 2px;
   border-style: solid;
@@ -612,7 +611,6 @@ h3 {
 
 .raisedButton:hover {
   top: 0px;
-  margin: 0px;
   border-radius: 0.75rem;
   border-width: 2px;
   border-style: solid;
@@ -627,7 +625,6 @@ h3 {
 
 .raisedButton:active {
   top: 0.25rem;
-  margin: 0px;
   border-radius: 0.75rem;
   border-width: 2px;
   border-style: solid;
@@ -703,19 +700,21 @@ footer {
   }
 }
 
-.footerLinks p,  .footerLinks a {
+.footerLinks p, 
+  .footerLinks a {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
 @media (min-width: 768px) {
-  .footerLinks p,  .footerLinks a {
+  .footerLinks p, 
+  .footerLinks a {
     padding-top: 0px;
     padding-bottom: 0px;
   }
 }
 
-.footerLinks>a svg {
+.footerLinks > a svg {
   margin-right: 0.5rem;
 }
 
@@ -845,12 +844,20 @@ footer {
   margin-bottom: 1.5rem;
 }
 
+.mr-10 {
+  margin-right: 2.5rem;
+}
+
 .ml-4 {
   margin-left: 1rem;
 }
 
 .mt-6 {
   margin-top: 1.5rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
 }
 
 .box-content {
@@ -1073,6 +1080,14 @@ footer {
   border-width: 2px;
 }
 
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
+.border-b-4 {
+  border-bottom-width: 4px;
+}
+
 .border-solid {
   border-style: solid;
 }
@@ -1085,6 +1100,20 @@ footer {
 .border-blue-500 {
   --tw-border-opacity: 1;
   border-color: rgb(59 130 246 / var(--tw-border-opacity));
+}
+
+.border-stone-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(168 162 158 / var(--tw-border-opacity));
+}
+
+.border-stone-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(87 83 78 / var(--tw-border-opacity));
+}
+
+.border-opacity-50 {
+  --tw-border-opacity: 0.5;
 }
 
 .bg-blue-500 {
@@ -1299,8 +1328,27 @@ footer {
   color: rgb(87 83 78 / var(--tw-text-opacity));
 }
 
+.text-stone-700 {
+  --tw-text-opacity: 1;
+  color: rgb(68 64 60 / var(--tw-text-opacity));
+}
+
+.text-stone-800 {
+  --tw-text-opacity: 1;
+  color: rgb(41 37 36 / var(--tw-text-opacity));
+}
+
+.text-stone-900 {
+  --tw-text-opacity: 1;
+  color: rgb(28 25 23 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
+}
+
+.opacity-60 {
+  opacity: 0.6;
 }
 
 .outline {

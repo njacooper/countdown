@@ -3,76 +3,70 @@
 @tailwind utilities;
 
 @layer base {
-
-    h3 {
-        @apply text-xl font-bold mb-3
-    }
-
+  h3 {
+    @apply text-xl font-bold mb-3;
+  }
 }
-
 
 @layer components {
+  .raisedButton {
+    @apply shadow-btn-3d border-solid border-2 border-[#012c7a] rounded-xl relative ease-in-out duration-300 bg-blue-700 text-white font-bold px-6 py-4 m-0 top-0;
+  }
 
-.raisedButton {
-    @apply shadow-btn-3d border-solid border-2 border-[#012c7a] rounded-xl mt-0 relative top-0 ease-in-out duration-300 bg-blue-700 text-white font-bold px-6 py-4 m-0
-}
+  .raisedButton:hover {
+    @apply shadow-btn-3d-hover border-solid border-2 border-[#012c7a] rounded-xl bg-blue-800 top-0;
+  }
 
-.raisedButton:hover {
-    @apply shadow-btn-3d-hover border-solid border-2 border-[#012c7a] rounded-xl top-0 bg-blue-800 m-0
-}
+  .raisedButton:active {
+    @apply shadow-btn-3d-active border-solid border-2 border-[#012c7a] rounded-xl top-1;
+  }
+  .raisedButton:disabled {
+    @apply shadow-btn-3d-active border-solid border-2 border-[#012c7a] rounded-xl top-2 bg-gray-400 cursor-not-allowed text-black m-0;
+  }
 
-.raisedButton:active {
-    @apply shadow-btn-3d-active border-solid border-2 border-[#012c7a] rounded-xl top-1 m-0
-}
-.raisedButton:disabled {
-    @apply shadow-btn-3d-active border-solid border-2 border-[#012c7a] rounded-xl top-2 bg-gray-400 cursor-not-allowed text-black m-0
-}
+  .navigation .active {
+    @apply !important;
+  }
 
+  .navigation li {
+    @apply relative;
+  }
+  .navigation li a {
+    @apply p-2 px-4 inline-block;
+  }
+  .navigation li:hover {
+    @apply bg-blue-800 rounded-2xl;
+  }
 
-.navigation .active{
-    @apply !important
-}
+  .navigation .active {
+    @apply h-2 absolute left-0 right-0 -bottom-3 bg-blue-400 z-0 rounded-lg;
+  }
 
-.navigation li{
-    @apply relative
-}
-.navigation li a{
-    @apply p-2 px-4 inline-block
-}
-.navigation li:hover{
-    @apply bg-blue-800 rounded-2xl
-}
-
-.navigation .active{
-    @apply h-2 absolute left-0 right-0 -bottom-3 bg-blue-400 z-0 rounded-lg
-}
-
-
-footer {
-    @apply py-4 bg-blue-900
+  footer {
+    @apply py-4 bg-blue-900;
   }
 
   .footerLinks {
-    @apply block md:flex md:gap-10 
+    @apply block md:flex md:gap-10;
   }
-  .footerLinks p, .footerLinks a {
-    @apply py-4 md:py-0
+  .footerLinks p,
+  .footerLinks a {
+    @apply py-4 md:py-0;
   }
 
-  .footerLinks>a svg {
-    @apply mr-2
+  .footerLinks > a svg {
+    @apply mr-2;
   }
 
   .pointsBox {
-    @apply flex items-center bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl
+    @apply flex items-center bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl;
   }
 
   .pointsBox .pointsTitle {
-    @apply font-bold text-xl md:text-5xl align-middle px-4 text-stone-50
+    @apply font-bold text-xl md:text-5xl align-middle px-4 text-stone-50;
   }
 
   .pointsBox .pointsTotal {
-    @apply w-fit p-4 text-stone-50 text-2xl lg:text-5xl font-bold
-   }
-
+    @apply w-fit p-4 text-stone-50 text-2xl lg:text-5xl font-bold;
+  }
 }
