@@ -276,6 +276,12 @@ function Game () {
 
   return (
     <>
+      <header className='border-b-2 border-stone-600 mb-4 border-opacity-50'>
+        <h1 className='font-bold text-2xl pb-4'>Letters Round</h1>
+        <h1 className='text-lg text-stone-700 mb-4'>
+          Pick a minimum of three vowels and four consonants, and then see what words you can form.
+        </h1>
+      </header>
       <div className='lg:w-[950px] justify-center flex pb-2 gap-3'>
         <div className='flex w-full'>
           <button
@@ -320,7 +326,6 @@ function Game () {
           </div>
         </div>
       </div>
-
       <div>
         <GameLettersSelection
           letters={state.letters}
@@ -343,7 +348,6 @@ function Game () {
           </button>
         </div>
       </div>
-
       <Modal
         isOpen={showSolutionsModal}
         onRequestClose={handleCloseSolutionsModal}
