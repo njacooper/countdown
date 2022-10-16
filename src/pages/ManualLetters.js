@@ -167,23 +167,33 @@ function ManualLetters () {
 
   return (
     <>
-      <div className='md:w-[950px] justify-center'>
-        <div className='pb-6'>
-          <h2 className='font-bold text-2xl pb-4'>Alphabet</h2>
-          <h3 className='text-base text-stone-600'>
-            First choose some letters and then find out what words those letters make!
-          </h3>
+      <main className='md:w-[950px] justify-center'>
+        <section className='pb-6'>
+          <header className='border-b-2 border-stone-600 mb-4 border-opacity-50'>
+            <h1 className='font-bold text-2xl pb-4'>Alphabet</h1>
+            <h1 className='text-lg text-stone-700 mb-4'>
+              First choose some letters and then find out what words those
+              letters make!
+            </h1>
+          </header>
           <LetterSelection
             lettersSelectionDisabled={lettersSelectionDisabled}
             handleAddLetter={handleAddLetter}
           />
 
-          <h2 className='mt-4 font-bold text-2xl py-4'>Letters</h2>
+          <section className='mt-8'>
+            <header className='border-b-2 border-stone-600 mb-4 border-opacity-50'>
+              <h1 className='font-bold text-2xl pb-4'>Letters</h1>
+              <h1 className='text-lg text-stone-700 mb-4'>
+                Once you're happy with your choosen letters, select 'Find Words' to see what can be found.
+              </h1>
+            </header>
 
-          <SelectedLetters
-            letters={letters}
-            handleRemoveLetter={handleRemoveLetter}
-          />
+            <SelectedLetters
+              letters={letters}
+              handleRemoveLetter={handleRemoveLetter}
+            />
+          </section>
 
           <button
             onClick={handleFindWords}
@@ -198,10 +208,10 @@ function ManualLetters () {
           >
             Clear
           </button>
-        </div>
+        </section>
 
         {results !== null ? (
-          <div className='bg-stone-50 mt-6 mb-6 rounded'>
+          <section className='bg-stone-50 mt-6 mb-6 rounded'>
             <h2 className='text-2xl p-4 font-bold'>Found Words:</h2>
             <div className='p-4 bg-stone-200 rounded-b'>
               {isResultsLoading ? (
@@ -210,9 +220,9 @@ function ManualLetters () {
                 <Results results={results} />
               )}
             </div>
-          </div>
+          </section>
         ) : null}
-      </div>
+      </main>
     </>
   )
 }
